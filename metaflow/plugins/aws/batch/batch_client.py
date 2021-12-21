@@ -184,6 +184,18 @@ class BatchJob(object):
                     {"value": "1", "type": "VCPU"},
                     {"value": "4096", "type": "MEMORY"},
                 ],
+                "volumes": [
+                    {
+                        "host": {"sourcePath": "/mnt/dev_storage"},
+                        "name": "efs"
+                    }
+                ],
+                'mountPoints': [
+                    {
+                        "containerPath": "/mnt/dev_storage",
+                        "sourceVolume": "efs"
+                    }
+                ]
             },
             # This propagates the AWS Batch resource tags to the underlying
             # ECS tasks.
